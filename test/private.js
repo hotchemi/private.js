@@ -1,28 +1,6 @@
-private.js
-==========
-private.jsは任意のprefixが付与されたプロパティにプライベートアクセサを付与するライブラリです｡
-サバクラ両方で動く事を目標に開発しています｡コードは非常にdirtyです｡
-
-### Install
-
-##### Node
-<pre>
-$ npm install private.js
-</pre>
-and
-<pre>
-var Pvt = require('private.js');
-</pre>
-
-##### Browser
-<pre>
-&lt;script src=&quot;expe.js&quot;&gt;&lt;/script&gt;
-</pre>
-
-### Usage
-関数Pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
-
-```javascript
+/**
+ * Module dependencies.
+ */
 var Pvt = require("../lib/private"),
   expect = require("expect.js");
 
@@ -71,6 +49,11 @@ describe('method suite', function() {
     expect(klass.getPrivateMethodReferPrivateVariable()).to.equal(2);
   });
 
+  // TODO not support yet
+  it('getPrivateMethodReferPublicVariable() should equal 1', function () {
+    //expect(klass.getPrivateMethodReferPublicVariable()).to.equal(1);
+  });
+
   it('should throw a error when access private method', function () {
     expect(function() {
       klass._getPrivateVariable();
@@ -89,10 +72,3 @@ describe('Variable suite', function() {
     expect(klass._privateVariable).to.equal(undefined);
   });
 });
-```
-
-## Release note
-* 2013/04/22 0.0.1 release
-
-## TODO
-* privateメソッドがpublicプロパティにアクセスできない問題の修正.

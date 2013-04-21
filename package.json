@@ -1,0 +1,21 @@
+{
+  "name": "private.js",
+  "version": "0.0.1",
+  "description": "private.js provides private accessor to javascript object",
+  "author": "Shintaro Katafuchi",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hotchemi/private.js.git"
+  },
+  "keywords": [
+    "private", "javascript", "library"
+  ],
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*"
+  },
+  "license": "MIT"
+}

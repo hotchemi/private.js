@@ -1,0 +1,7 @@
+.git/
+.idea/
+.gitignore
+.travis.yml
+.DS_Store
+node_modules/
+grunt.js
