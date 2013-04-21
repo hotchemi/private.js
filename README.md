@@ -1,4 +1,5 @@
-private.js
+private.js [![Build Status](https://secure.travis-ci.org/hotchemi/private.js.png)](http://travis-ci
+.org/hotchemi/private.js)
 ==========
 private.jsは任意のprefixが付与されたプロパティにプライベートアクセサを付与するライブラリです｡
 サバクラ両方で動く事を目標に開発しています｡コードは非常にdirtyです｡
