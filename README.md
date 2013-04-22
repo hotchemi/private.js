@@ -1,11 +1,11 @@
 private.js [![Build Status](https://secure.travis-ci.org/hotchemi/private.js.png)](http://travis-ci.org/hotchemi/private.js)
 ==========
-private.jsは任意のprefixが付与されたプロパティにプライベートアクセサを付与するライブラリです｡
-サバクラ両方で動く事を目標に開発しています｡コードは非常にdirtyです｡
+private.js provides private accessor to object property with option prefix.<br/>
+サバクラ両方での動作を目標に開発中｡
 
-### Install
+## Install
 
-##### Node
+### Node
 <pre>
 $ npm install private.js
 </pre>
@@ -14,80 +14,56 @@ and
 var Pvt = require('private.js');
 </pre>
 
-##### Browser
+### Browser
 <pre>
 &lt;script src=&quot;private.min.js&quot;&gt;&lt;/script&gt;
 </pre>
 
-### Usage
-関数Pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
+## Usage
+グローバル関数$pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
 
 ```javascript
-var Pvt = require("private"),
+var Pvt = require("private.js"),
   expect = require("expect.js");
 
-var klass = Pvt("_", {
+  var klass = $pvt("_", {
 
+  // publicメンバにアクセスするpublic method
   getPublicVariable: function() {
     return this.publicVariable;
   },
 
+  // privateメンバにアクセスするpublic method
   getPrivatevariable: function() {
     return _privateVariable;
   },
 
+  // privateメンバを参照しているprivateメソッドを呼び出すpublic method
   getPrivateMethodReferPrivateVariable: function() {
     return _getPrivateVariable();
   },
 
-  // TODO not support yet
+  // publicメンバを参照しているprivateメソッドを呼び出すpublic method
   getPrivateMethodReferPublicVariable: function() {
-    return _getPublicVariable();
+    // この場合はコンテキストを指定しないといけない…
+    return _getPublicVariable.call(this);
   },
 
+  // privateメンバにアクセスするprivate method
   _getPrivateVariable: function() {
     return _privateVariable;
   },
 
+  // publicメンバにアクセスするprivate method
   _getPublicVariable: function() {
     return this.publicVariable;
   },
 
+  // publicメンバ
   publicVariable: 1,
 
+  // privateメンバ
   _privateVariable: 2
-});
-
-describe('method suite', function() {
-  it('getPublicVariable() should equal 1', function () {
-    expect(klass.getPublicVariable()).to.equal(1);
-  });
-
-  it('getPrivatevariable() should equal 2', function () {
-    expect(klass.getPrivatevariable()).to.equal(2);
-  });
-
-  it('getPrivateMethodReferPrivateVariable() should equal 2', function () {
-    expect(klass.getPrivateMethodReferPrivateVariable()).to.equal(2);
-  });
-
-  it('should throw a error when access private method', function () {
-    expect(function() {
-      klass._getPrivateVariable();
-      klass._getPublicVariable();
-    }).to.throwError();
-  });
-});
-
-describe('Variable suite', function() {
-  it('publicVariable should equal 1', function () {
-    expect(klass.publicVariable).to.equal(1);
-  });
-
-  it("can't access private variable", function () {
-    expect(klass).to.not.have.property('_privateVariable');
-    expect(klass._privateVariable).to.equal(undefined);
-  });
 });
 ```
 ## Test
@@ -97,12 +73,9 @@ $ npm test
 
 ## Minify
 <pre>
-$ npm install -g grunt@0.3.17
-$ grunt
+$ npm install && grunt
 </pre>
 
 ## Release note
 * 2013/04/22 0.0.1 release
-
-## TODO
-* privateメソッドがpublicプロパティにアクセスできない問題の修正.
+* 2013/04/23 0.0.2 release
