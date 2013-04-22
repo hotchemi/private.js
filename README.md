@@ -23,7 +23,7 @@ var Pvt = require('private.js');
 関数Pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
 
 ```javascript
-var Pvt = require("../lib/private"),
+var Pvt = require("private"),
   expect = require("expect.js");
 
 var klass = Pvt("_", {

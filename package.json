@@ -1,8 +1,9 @@
 {
   "name": "private.js",
-  "version": "0.0.1",
-  "description": "private.js provides private accessor to javascript object",
+  "version": "0.0.2",
+  "description": "Provides private accessor to javascript object",
   "author": "Shintaro Katafuchi",
+  "main" : "lib/private.js",
   "scripts": {
     "test": "mocha"
   },
@@ -15,7 +16,8 @@
   ],
   "devDependencies": {
     "mocha": "*",
-    "expect.js": "*"
+    "expect.js": "*",
+    "grunt": "0.3.17"
   },
   "license": "MIT"
 }

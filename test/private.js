@@ -1,10 +1,10 @@
 /**
  * Module dependencies.
  */
-var Pvt = require("../lib/private"),
+var $pvt = require("../lib/private"),
   expect = require("expect.js");
 
-var klass = Pvt("_", {
+var klass = $pvt("_", {
 
   getPublicVariable: function() {
     return this.publicVariable;
@@ -18,9 +18,8 @@ var klass = Pvt("_", {
     return _getPrivateVariable();
   },
 
-  // TODO not support yet
   getPrivateMethodReferPublicVariable: function() {
-    return _getPublicVariable();
+    return _getPublicVariable.call(this);
   },
 
   _getPrivateVariable: function() {
@@ -36,6 +35,16 @@ var klass = Pvt("_", {
   _privateVariable: 2
 });
 
+describe('constructor suite', function() {
+  it('should throw a error when prefix is not string', function () {
+    expect(function() {
+      var klass = $pvt(null, {});
+    }).to.throwError(function(err) {
+        expect(err.message).to.equal("prefix must be string.")
+      });
+  });
+});
+
 describe('method suite', function() {
   it('getPublicVariable() should equal 1', function () {
     expect(klass.getPublicVariable()).to.equal(1);
@@ -49,9 +58,8 @@ describe('method suite', function() {
     expect(klass.getPrivateMethodReferPrivateVariable()).to.equal(2);
   });
 
-  // TODO not support yet
   it('getPrivateMethodReferPublicVariable() should equal 1', function () {
-    //expect(klass.getPrivateMethodReferPublicVariable()).to.equal(1);
+    expect(klass.getPrivateMethodReferPublicVariable()).to.equal(1);
   });
 
   it('should throw a error when access private method', function () {
