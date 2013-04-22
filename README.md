@@ -23,7 +23,7 @@ var Pvt = require('private.js');
 グローバル関数$pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
 
 ```javascript
-var Pvt = require("private.js"),
+var $pvt = require("private.js"),
   expect = require("expect.js");
 
   var klass = $pvt("_", {
