@@ -16,7 +16,7 @@ var Pvt = require('private.js');
 
 ##### Browser
 <pre>
-&lt;script src=&quot;expe.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;private.min.js&quot;&gt;&lt;/script&gt;
 </pre>
 
 ### Usage
@@ -90,6 +90,16 @@ describe('Variable suite', function() {
   });
 });
 ```
+## Test
+<pre>
+$ npm test
+</pre>
+
+## Minify
+<pre>
+$ npm install -g grunt@0.3.17
+$ grunt
+</pre>
 
 ## Release note
 * 2013/04/22 0.0.1 release
