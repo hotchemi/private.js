@@ -1,7 +1,6 @@
 private.js [![Build Status](https://secure.travis-ci.org/hotchemi/private.js.png)](http://travis-ci.org/hotchemi/private.js)
 ==========
-private.js provides private accessor to object property with option prefix.<br/>
-サバクラ両方での動作を目標に開発中｡
+private.js provides private accessor to object property with option prefix.
 
 ## Install
 
@@ -9,7 +8,6 @@ private.js provides private accessor to object property with option prefix.<br/>
 <pre>
 $ npm install private.js
 </pre>
-and
 
 ### Browser
 <pre>
@@ -76,4 +74,4 @@ $ grunt
 
 ## Release note
 * 2013/04/22 0.0.1 release
-* 2013/04/23 0.0.2 release
+* 2013/04/23 0.0.3 release

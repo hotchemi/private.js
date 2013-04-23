@@ -10,7 +10,7 @@ var klass = $pvt("_", {
     return this.publicVariable;
   },
 
-  getPrivatevariable: function() {
+  getPrivateVariable: function() {
     return _privateVariable;
   },
 
@@ -39,8 +39,8 @@ describe('constructor suite', function() {
   it('should throw a error when prefix is not string', function () {
     expect(function() {
       var klass = $pvt(null, {});
-    }).to.throwError(function(err) {
-        expect(err.message).to.equal("prefix must be string.")
+    }).to.throwError(function(e) {
+        expect(e.message).to.equal("prefix must be string.")
       });
   });
 });
@@ -50,8 +50,8 @@ describe('method suite', function() {
     expect(klass.getPublicVariable()).to.equal(1);
   });
 
-  it('getPrivatevariable() should equal 2', function () {
-    expect(klass.getPrivatevariable()).to.equal(2);
+  it('getPrivateVariable() should equal 2', function () {
+    expect(klass.getPrivateVariable()).to.equal(2);
   });
 
   it('getPrivateMethodReferPrivateVariable() should equal 2', function () {
@@ -62,9 +62,14 @@ describe('method suite', function() {
     expect(klass.getPrivateMethodReferPublicVariable()).to.equal(1);
   });
 
-  it('should throw a error when access private method', function () {
+  it('should throw a error when access _getPrivateVariable', function () {
     expect(function() {
       klass._getPrivateVariable();
+    }).to.throwError();
+  });
+
+  it('should throw a error when access _getPublicVariable', function () {
+    expect(function() {
       klass._getPublicVariable();
     }).to.throwError();
   });
