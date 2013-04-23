@@ -10,9 +10,6 @@ private.js provides private accessor to object property with option prefix.<br/>
 $ npm install private.js
 </pre>
 and
-<pre>
-var Pvt = require('private.js');
-</pre>
 
 ### Browser
 <pre>
@@ -20,7 +17,8 @@ var Pvt = require('private.js');
 </pre>
 
 ## Usage
-グローバル関数$pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
+client:グローバル関数$pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
+下記はNodeのサンプル。
 
 ```javascript
 var $pvt = require("private.js"),
@@ -73,7 +71,7 @@ $ npm test
 
 ## Minify
 <pre>
-$ npm install && grunt
+$ grunt
 </pre>
 
 ## Release note
