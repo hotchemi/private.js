@@ -1,10 +1,3 @@
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
 .idea/
 .DS_Store
 node_modules/

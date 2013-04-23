@@ -3,7 +3,6 @@ private.js [![Build Status](https://secure.travis-ci.org/hotchemi/private.js.png
 private.js provides private accessor to object property with option prefix.
 
 ## Install
-
 ### Node
 <pre>
 $ npm install private.js
@@ -15,14 +14,11 @@ $ npm install private.js
 </pre>
 
 ## Usage
-client:グローバル関数$pvtの第一引数に渡したprefixが付与されたプロパティをprivateにします｡
-下記はNodeのサンプル。
-
 ```javascript
 var $pvt = require("private.js"),
   expect = require("expect.js");
 
-  var klass = $pvt("_", {
+  var klass = $pvt("_" /* 第一引数にprefixを指定 */, {
 
   // publicメンバにアクセスするpublic method
   getPublicVariable: function() {
@@ -74,4 +70,4 @@ $ grunt
 
 ## Release note
 * 2013/04/22 0.0.1 release
-* 2013/04/23 0.0.3 release
+* 2013/04/24 0.0.4 release

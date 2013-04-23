@@ -1,6 +1,6 @@
 {
   "name": "private.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "provides private accessor to javascript object",
   "author": "Shintaro Katafuchi",
   "main" : "lib/private",
