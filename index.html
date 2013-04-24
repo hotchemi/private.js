@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Private.js by hotchemi</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Private.js</h1>
+        <p>Provides private accessor to javascript object.</p>
+        <p class="view"><a href="https://github.com/hotchemi/private.js">View the Project on GitHub <small>hotchemi/private.js</small></a></p>
+        <ul>
+          <li><a href="https://github.com/hotchemi/private.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hotchemi/private.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/hotchemi/private.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>private.js <a href="http://travis-ci.org/hotchemi/private.js"><img src="https://secure.travis-ci.org/hotchemi/private.js.png" alt="Build Status"></a>
+</h1>
+
+<p>private.js provides private accessor to object property with option prefix.</p>
+
+<h2>Install</h2>
+
+<h3>Node</h3>
+
+<pre>
+$ npm install private.js
+</pre>
+
+<h3>Browser</h3>
+
+<pre>
+&lt;script src="private.min.js"&gt;&lt;/script&gt;
+</pre>
+
+<h2>Usage</h2>
+
+<p>Node.js sample.</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">$pvt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"private.js"</span><span class="p">),</span>
+  <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"expect.js"</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">klass</span> <span class="o">=</span> <span class="nx">$pvt</span><span class="p">(</span><span class="s2">"_"</span> <span class="cm">/* prefix */</span><span class="p">,</span> <span class="p">{</span>
+
+  <span class="c1">// public method access to public variable</span>
+  <span class="nx">getPublicVariable</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">publicVariable</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="c1">// public method access to private variable</span>
+  <span class="nx">getPrivatevariable</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">_privateVariable</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="c1">// privateメンバを参照しているprivateメソッドを呼び出すpublic method</span>
+  <span class="nx">getPrivateMethodReferPrivateVariable</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">_getPrivateVariable</span><span class="p">();</span>
+  <span class="p">},</span>
+
+  <span class="c1">// publicメンバを参照しているprivateメソッドを呼び出すpublic method</span>
+  <span class="nx">getPrivateMethodReferPublicVariable</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// この場合はコンテキストを指定しないといけない…</span>
+    <span class="k">return</span> <span class="nx">_getPublicVariable</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="c1">// privateメンバにアクセスするprivate method</span>
+  <span class="nx">_getPrivateVariable</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">_privateVariable</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="c1">// publicメンバにアクセスするprivate method</span>
+  <span class="nx">_getPublicVariable</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">publicVariable</span><span class="p">;</span>
+  <span class="p">},</span>
+
+  <span class="c1">// public variable</span>
+  <span class="nx">publicVariable</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+
+  <span class="c1">// private variable</span>
+  <span class="nx">_privateVariable</span><span class="o">:</span> <span class="mi">2</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>Test</h2>
+
+<pre>
+$ npm test
+</pre>
+
+<h2>Minify</h2>
+
+<pre>
+$ grunt
+</pre>
+
+<h2>Release note</h2>
+
+<ul>
+<li>2013/04/22 0.0.1 release</li>
+<li>2013/04/24 0.0.4 release</li>
+</ul>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/hotchemi">hotchemi</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
