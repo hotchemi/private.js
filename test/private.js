@@ -35,12 +35,20 @@ var klass = $pvt("_", {
   _privateVariable: 2
 });
 
-describe('constructor suite', function() {
+describe('arguments suite', function() {
   it('should throw a error when prefix is not string', function () {
     expect(function() {
       var klass = $pvt(null, {});
     }).to.throwError(function(e) {
         expect(e.message).to.equal("prefix must be string.")
+      });
+  });
+
+  it('should throw a error when object is not null', function () {
+    expect(function() {
+      var klass = $pvt("@", null);
+    }).to.throwError(function(e) {
+        expect(e.message).to.equal("object must be setted.")
       });
   });
 });
@@ -75,7 +83,7 @@ describe('method suite', function() {
   });
 });
 
-describe('Variable suite', function() {
+describe('variable suite', function() {
   it('publicVariable should equal 1', function () {
     expect(klass.publicVariable).to.equal(1);
   });

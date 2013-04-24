@@ -14,18 +14,19 @@ $ npm install private.js
 </pre>
 
 ## Usage
+Node.js sample.
 ```javascript
 var $pvt = require("private.js"),
   expect = require("expect.js");
 
-  var klass = $pvt("_" /* 第一引数にprefixを指定 */, {
+  var klass = $pvt("_" /* prefix */, {
 
-  // publicメンバにアクセスするpublic method
+  // public method access to public variable
   getPublicVariable: function() {
     return this.publicVariable;
   },
 
-  // privateメンバにアクセスするpublic method
+  // public method access to private variable
   getPrivatevariable: function() {
     return _privateVariable;
   },
@@ -51,10 +52,10 @@ var $pvt = require("private.js"),
     return this.publicVariable;
   },
 
-  // publicメンバ
+  // public variable
   publicVariable: 1,
 
-  // privateメンバ
+  // private variable
   _privateVariable: 2
 });
 ```
