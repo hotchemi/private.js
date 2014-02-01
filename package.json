@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "provides private accessor to javascript object",
   "author": "Shintaro Katafuchi",
-  "main" : "lib/private",
+  "main": "lib/private",
   "scripts": {
     "test": "mocha"
   },
@@ -12,12 +12,16 @@
     "url": "git@github.com:hotchemi/private.js.git"
   },
   "keywords": [
-    "private", "javascript", "library", "object"
+    "private",
+    "javascript",
+    "library",
+    "object"
   ],
   "devDependencies": {
     "mocha": "*",
     "expect.js": "*",
-    "grunt": "0.3.17"
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.3.2"
   },
   "license": "MIT"
 }
